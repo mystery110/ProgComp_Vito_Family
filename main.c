@@ -34,25 +34,17 @@ int main (){
 		/*For each test case, read the total number of relative first*/
 		int number_of_relative=0,relative_index=0;
 		/*Then start reading the street number relatives living in*/
-		if(fgets(input,sizeof(input),stdin)!=NULL){
 
-			sscanf(input,"%d",&number_of_relative);
-			temp_char_pointer=strpbrk(input," ");
-			*temp_char_pointer='\0';
-			temp_char_pointer++;
-			strcpy(input,temp_char_pointer);
+			scanf("%d",&number_of_relative);
 
 			for(relative_index=0;relative_index<number_of_relative;relative_index++){
-				sscanf(input,"%d",&relative_street_number[relative_index]);
+				scanf("%d",&relative_street_number[relative_index]);
 
 				/*delete the string up till white space ie meeted*/
-				if(relative_index!=number_of_relative-1){
-					temp_char_pointer=strpbrk(input," ");
-					*temp_char_pointer='\0';
-					temp_char_pointer++;
-					strcpy(input,temp_char_pointer);
-				}
 			}
+
+			/*remove the newline character*/
+			fgetc(stdin);
 
 
 			/*Start finding the shortest distance for all street*/
@@ -73,5 +65,4 @@ int main (){
 			}
 			printf("%d\n",shortest_distance);
 		}
-	}
 }
